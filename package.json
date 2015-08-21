@@ -1,6 +1,6 @@
 {
   "name": "generator-toomuchng",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An angular generator with gulp and bootstrap",
   "main": "index.js",
   "files": ["app", "collection", "component", "directive", "filter", "model", "page", "service"],
@@ -11,7 +11,7 @@
     "yeoman-generator"
   ],
   "author": "Jake Robers",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "yeoman-generator": "^0.20.3"
   }
