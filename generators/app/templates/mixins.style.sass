@@ -1,0 +1,79 @@
+/**
+ * Written by Rick Allen. https://github.com/stoodder
+ */
+
+=border-radius($radius)
+	border-radius: $radius
+
+=border-bottom-radius($radius)
+	border-bottom-left-radius: $radius
+	-moz-border-bottom-left-radius: $radius
+	border-bottom-right-radius: $radius
+	-moz-border-bottom-right-radius: $radius
+
+=border-top-radius($radius)
+	border-top-left-radius: $radius
+	-moz-border-top-left-radius: $radius
+	border-top-right-radius: $radius
+	-moz-border-top-right-radius: $radius
+
+=border-left-radius($radius)
+	border-top-left-radius: $radius
+	-moz-border-top-left-radius: $radius
+	border-bottom-left-radius: $radius
+	-moz-border-bottom-left-radius: $radius
+
+=border-top-left-radius($radius)
+	border-top-left-radius: $radius
+	-moz-border-top-leqft-radius: $radius
+
+=border-bottom-left-radius($radius)
+	border-bottom-left-radius: $radius
+	-moz-border-bottom-left-radius: $radius
+
+=border-right-radius($radius)
+	border-top-right-radius: $radius
+	-moz-border-top-right-radius: $radius
+	border-bottom-right-radius: $radius
+	-moz-border-bottom-right-radius: $radius
+
+=border-top-right-radius($radius)
+	border-top-right-radius: $radius
+	-moz-border-top-right-radius: $radius
+
+=border-bottom-right-radius($radius)
+	border-bottom-right-radius: $radius
+	-moz-border-bottom-right-radius: $radius
+
+=box-shadow($value...)
+	box-shadow: $value
+	-webkit-box-shadow: $value
+	-moz-box-shadow: $value
+
+=glow($amount, $color)
+	box-shadow: 0px 0px $amount $color
+	-webkit-box-shadow: 0px 0px $amount $color
+	-moz-box-shadow: 0px 0px $amount $color
+
+=inner-glow($amount, $color)
+	box-shadow: inset 0px 0px $amount $color
+	-webkit-box-shadow: inset 0px 0px $amount $color
+	-moz-box-shadow: inset 0px 0px $amount $color
+
+=shadow($amount, $color: #000000)
+	box-shadow: 0px $amount/3 $amount $color
+	-webkit-box-shadow: 0px $amount/3 $amount $color
+	-moz-box-shadow: 0px $amount/3 $amount $color
+
+=inner-shadow($amount, $color: #000000)
+	box-shadow: inset 0px $amount/3 $amount $color
+	-webkit-box-shadow: inset 0px $amount/3 $amount $color
+	-moz-box-shadow: inset 0px $amount/3 $amount $color
+
+=opacity($opacity)
+	opacity: $opacity
+	-moz-opacity: $opacity
+	-webkit-opacity: $opacity
+	-o-opacity: $opacity
+	$opacity-ie: $opacity * 100
+	filter: alpha(opacity=$opacity-ie)
