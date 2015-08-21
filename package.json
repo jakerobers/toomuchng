@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "An angular generator with gulp and bootstrap",
   "main": "index.js",
-  "files": ["app", "router"],
+  "files": ["app", "collection", "component", "directive", "filter", "model", "page", "service"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
