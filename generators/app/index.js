@@ -1,6 +1,42 @@
 var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
+	_hasAuth: false,
+	_generateAuth: function() {
+		this.fs.copyTpl(
+			this.templatePath('assets/services/auth.service.js'),
+			this.destinationPath('assets/services/auth.service.js')
+		);
+
+		this.fs.copyTpl(
+			this.templatePath('assets/services/session.service.js'),
+			this.destinationPath('assets/services/session.service.js')
+		);
+
+		this.fs.copyTpl(
+			this.templatePath('assets/models/user.model.js'),
+			this.destinationPath('assets/models/user.model.js')
+		);
+	},
+
+	prompting: function () {
+		var done = this.async();
+		var prompts = [{
+			type    : 'confirm',
+			name    : 'hasAuth',
+			message : 'Should we generate an auth service and user models?',
+			default : false
+		}];
+
+		this.prompt(prompts, function (answers) {
+			if ( answers.hasAuth ) {
+				this._hasAuth = true;
+			}
+			done();
+		}.bind(this));
+
+	},
+
 	writing: {
 		root: function() {
 			this.fs.copyTpl(
@@ -15,43 +51,48 @@ module.exports = generators.Base.extend({
 		},
 
 		assets: function() {
+
+			if ( this._hasAuth ) {
+				this._generateAuth();
+			}
+
 			this.fs.copyTpl(
-				this.templatePath('app.js'),
+				this.templatePath('assets/app.js'),
 				this.destinationPath('assets/app.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('constants.js'),
+				this.templatePath('assets/constants.js'),
 				this.destinationPath('assets/constants.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('index.html'),
+				this.templatePath('assets/index.html'),
 				this.destinationPath('assets/index.html')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('layout.style.sass'),
+				this.templatePath('assets/layout.style.sass'),
 				this.destinationPath('assets/layout.style.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('mixins.style.sass'),
+				this.templatePath('assets/mixins.style.sass'),
 				this.destinationPath('assets/mixins.style.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('routes.js'),
+				this.templatePath('assets/routes.js'),
 				this.destinationPath('assets/routes.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('style.sass'),
+				this.templatePath('assets/style.sass'),
 				this.destinationPath('assets/style.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('variables.style.sass'),
+				this.templatePath('assets/variables.style.sass'),
 				this.destinationPath('assets/variables.style.sass')
 			);
 		},
@@ -63,78 +104,78 @@ module.exports = generators.Base.extend({
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('build.task.js'),
+		      this.templatePath('gulp_tasks/build.task.js'),
 		      this.destinationPath('gulp_tasks/build.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('clean.task.js'),
+		      this.templatePath('gulp_tasks/clean.task.js'),
 		      this.destinationPath('gulp_tasks/clean.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('config.js'),
+		      this.templatePath('gulp_tasks/config.js'),
 		      this.destinationPath('gulp_tasks/config.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('css.task.js'),
+		      this.templatePath('gulp_tasks/css.task.js'),
 		      this.destinationPath('gulp_tasks/css.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('fonts.task.js'),
+		      this.templatePath('gulp_tasks/fonts.task.js'),
 		      this.destinationPath('gulp_tasks/fonts.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('html.task.js'),
+		      this.templatePath('gulp_tasks/html.task.js'),
 		      this.destinationPath('gulp_tasks/html.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('images.task.js'),
+		      this.templatePath('gulp_tasks/images.task.js'),
 		      this.destinationPath('gulp_tasks/images.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('javascript.task.js'),
+		      this.templatePath('gulp_tasks/javascript.task.js'),
 		      this.destinationPath('gulp_tasks/javascript.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('push.task.js'),
+		      this.templatePath('gulp_tasks/push.task.js'),
 		      this.destinationPath('gulp_tasks/push.tasks.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('secrets.js'),
+		      this.templatePath('gulp_tasks/secrets.js'),
 		      this.destinationPath('gulp_tasks/secrets.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('serve.task.js'),
+		      this.templatePath('gulp_tasks/serve.task.js'),
 		      this.destinationPath('gulp_tasks/serve.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('spec.task.js'),
+		      this.templatePath('gulp_tasks/spec.task.js'),
 		      this.destinationPath('gulp_tasks/spec.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('vendor.task.js'),
+		      this.templatePath('gulp_tasks/vendor.task.js'),
 		      this.destinationPath('gulp_tasks/vendor.task.js')
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('watch.task.js'),
+		      this.templatePath('gulp_tasks/watch.task.js'),
 		      this.destinationPath('gulp_tasks/watch.task.js')
 		    );
 		},
-		collection: function() {
+		collections: function() {
 			this.fs.copyTpl(
-		      this.templatePath('base.collection.js'),
+		      this.templatePath('assets/collections/base.collection.js'),
 		      this.destinationPath('assets/collections/base.collection.js')
 		    );
 		},
@@ -144,21 +185,15 @@ module.exports = generators.Base.extend({
 		images: function() {
 			this.mkdir('assets/images');
 		},
-		model: function() {
-			this.fs.copyTpl(
-		      this.templatePath('base.model.js'),
-		      this.destinationPath('assets/models/base.model.js')
-		    );
-		},
 		services: function() {
+			if ( !this._hasAuth ) {
+				this.mkdir('assets/services');
+			}
+		},
+		models: function() {
 			this.fs.copyTpl(
-		      this.templatePath('auth.service.js'),
-		      this.destinationPath('assets/services/auth.service.js')
-		    );
-
-		    this.fs.copyTpl(
-		      this.templatePath('session.service.js'),
-		      this.destinationPath('assets/services/session.service.js')
+		      this.templatePath('assets/models/base.model.js'),
+		      this.destinationPath('assets/models/base.model.js')
 		    );
 		},
 		vendor: function() {

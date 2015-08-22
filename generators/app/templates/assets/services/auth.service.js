@@ -1,4 +1,4 @@
-app.service('Auth', [ '$http', '$rootScope', '$window', 'ngAuthSettings', 'Session', 'AUTH_EVENTS', '$q', 'User',
+app.service('AuthService', [ '$http', '$rootScope', '$window', 'ngAuthSettings', 'Session', 'AUTH_EVENTS', '$q', 'UserModel',
 function($http, $rootScope, $window, ngAuthSettings, Session, AUTH_EVENTS, $q, User) {
 
 	//the login function

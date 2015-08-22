@@ -12,6 +12,20 @@ What's in the box?
  - Html templating
 
 ## Installation
+
+### Requirements
+Gulp
+```
+npm install -g gulp
+```
+
+Yeoman
+```
+npm install -g yo
+```
+
+### Too Much Angular
+
 Install the generator through the [npm package](https://www.npmjs.com/package/generator-toomuchng).
 ```
 npm install -g generator-toomuchng
