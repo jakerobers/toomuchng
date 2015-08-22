@@ -235,6 +235,8 @@ module.exports = generators.Base.extend({
 				"gulp-rename",
 				"gulp-sass",
 				"jasmine-core",
+				"jshint",
+				"jshint-stylish",
 				"karma",
 				"karma-jasmine",
 				"karma-phantomjs-launcher",
