@@ -2,13 +2,19 @@
   "name": "generator-toomuchng",
   "version": "1.0.4",
   "description": "An angular generator with gulp and bootstrap",
-  "main": "index.js",
+  "main": "generators/app/index.js",
   "files": ["generators"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "scaffold",
+    "framework",
+    "component",
+    "front-end",
+    "app",
+    "angular"
   ],
   "author": "Jake Robers",
   "license": "MIT",
