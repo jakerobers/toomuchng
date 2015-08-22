@@ -115,7 +115,7 @@ module.exports = generators.Base.extend({
 
 		    this.fs.copyTpl(
 		      this.templatePath('gulp_tasks/config.js'),
-		      this.destinationPath('gulp_tasks/config.task.js')
+		      this.destinationPath('gulp_tasks/config.js')
 		    );
 
 		    this.fs.copyTpl(
@@ -145,12 +145,12 @@ module.exports = generators.Base.extend({
 
 		    this.fs.copyTpl(
 		      this.templatePath('gulp_tasks/push.task.js'),
-		      this.destinationPath('gulp_tasks/push.tasks.js')
+		      this.destinationPath('gulp_tasks/push.task.js')
 		    );
 
 		    this.fs.copyTpl(
 		      this.templatePath('gulp_tasks/secrets.js'),
-		      this.destinationPath('gulp_tasks/secrets.task.js')
+		      this.destinationPath('gulp_tasks/secrets.js')
 		    );
 
 		    this.fs.copyTpl(
@@ -180,7 +180,7 @@ module.exports = generators.Base.extend({
 		    );
 		},
 		components: function() {
-
+			this.mkdir('assets/components');
 		},
 		fonts: function() {
 			this.mkdir('assets/fonts');
@@ -220,7 +220,8 @@ module.exports = generators.Base.extend({
 
 	install: {
 		npm: function() {
-			this.npmInstall(["aws-sdk",
+			this.npmInstall([
+				"aws-sdk",
 				"del",
 				"gulp",
 				"gulp-awspublish",
@@ -228,17 +229,13 @@ module.exports = generators.Base.extend({
 				"gulp-connect",
 				"gulp-flatten",
 				"gulp-jasmine",
-				"gulp-jshint",
-				"gulp-jslint",
 				"gulp-livereload",
 				"gulp-load-plugins",
 				"gulp-ng-annotate",
 				"gulp-rename",
 				"gulp-sass",
 				"jasmine-core",
-				"jshint-stylish",
 				"karma",
-				"karma-chrome-launcher",
 				"karma-jasmine",
 				"karma-phantomjs-launcher",
 				"mime",
@@ -247,19 +244,21 @@ module.exports = generators.Base.extend({
 				"progress",
 				"q",
 				"run-sequence",
-				"through2"],
-			{ 'saveDev': true });
+				"through2"
+			], { 'saveDev': true });
 		},
 		bower: function() {
-			this.bowerInstall(["angular-route",
+			this.bowerInstall([
+				"angular-route",
 				"underscore",
 				"bootstrap",
 				"angular",
 				"angular-mocks",
 				"angular-resource",
 				"angular-messages",
-				"angular-websocket"],
-			{ 'save': true });
+				"angular-bootstrap",
+				"angular-websocket"
+			], { 'save': true });
 		}
 	}
 });
