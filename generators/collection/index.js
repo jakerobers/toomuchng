@@ -1,8 +1,13 @@
 var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
-	collectionName: null,
-	modelName: null,
+	_collectionName: null,
+	_modelName: null,
+	_fileName: null,
+	_entityNameFilter: function(entity) {
+		var result = entity.split(' ')[0];
+	    return result.charAt(0).toUpperCase() + result.slice(1);
+	},
 
 	prompting: function () {
 		var done = this.async();
@@ -19,8 +24,9 @@ module.exports = generators.Base.extend({
 		}];
 
 		this.prompt(prompts, function (answers) {
-			this.collectionName = answers.collectionName;
-			this.modelName = answers.modelName;
+			this._collectionName = this._entityNameFilter(answers.collectionName) + "Collection";
+			this._fileName = answers.collectionName.toLowerCase();
+			this._modelName = this._entityNameFilter(answers.modelName) + "Model";
 			done();
 		}.bind(this));
 
@@ -28,8 +34,8 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		this.fs.copyTpl(
 	      this.templatePath('entity.js'),
-	      this.destinationPath('assets/collections/'+ this.collectionName +'.collection.js'),
-	      { collection: this.collectionName, model: this.modelName }
+	      this.destinationPath('assets/collections/'+ this._fileName +'.collection.js'),
+	      { collection: this._collectionName, model: this._modelName }
 	    );
 	}
 });

@@ -1,7 +1,12 @@
 var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
-	entityName: null,
+	_entityName: null,
+	_fileName: null,
+	_entityNameFilter: function(entity) {
+		var result = entity.split(' ')[0];
+	    return result.charAt(0).toUpperCase() + result.slice(1);
+	},
 
 	prompting: function () {
 		var done = this.async();
@@ -9,11 +14,12 @@ module.exports = generators.Base.extend({
 			type    : 'input',
 			name    : 'entityName',
 			message : 'Component name',
-			default : 'untitledComponent'
+			default : 'UntitledComponent'
 		}];
 
 		this.prompt(prompts, function (answers) {
-			this.entityName = answers.entityName;
+			this._entityName = this._entityNameFilter(answers.entityName) + "Component";
+			this._fileName = answers.entityName.toLowerCase();
 			done();
 		}.bind(this));
 
@@ -21,8 +27,20 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		this.fs.copyTpl(
 	      this.templatePath('entity.js'),
-	      this.destinationPath('assets/components/'+ this.entityName +'.component.js'),
-	      { entity: this.entityName }
+	      this.destinationPath('assets/components/'+ this._fileName +'.component.js'),
+	      { entity: this._entityName }
+	    );
+
+	    this.fs.copyTpl(
+	      this.templatePath('entity.html'),
+	      this.destinationPath('assets/components/'+ this._fileName +'.template.html'),
+	      { entity: this._entityName }
+	    );
+
+	    this.fs.copyTpl(
+	      this.templatePath('entity.sass'),
+	      this.destinationPath('assets/components/'+ this._fileName +'.style.sass'),
+	      { entity: this._entityName }
 	    );
 	}
 });
