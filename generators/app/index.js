@@ -179,11 +179,28 @@ module.exports = generators.Base.extend({
 		      this.destinationPath('assets/collections/base.collection.js')
 		    );
 		},
+		components: function() {
+
+		},
 		fonts: function() {
 			this.mkdir('assets/fonts');
 		},
 		images: function() {
 			this.mkdir('assets/images');
+		},
+		pages: function() {
+			this.fs.copyTpl(
+		      this.templatePath('assets/pages/dashboard.controller.js'),
+		      this.destinationPath('assets/pages/dashboard.controller.js')
+		    );
+		    this.fs.copyTpl(
+		      this.templatePath('assets/pages/dashboard.style.sass'),
+		      this.destinationPath('assets/pages/dashboard.style.sass')
+		    );
+		    this.fs.copyTpl(
+		      this.templatePath('assets/pages/dashboard.template.html'),
+		      this.destinationPath('assets/pages/dashboard.template.html')
+		    );
 		},
 		services: function() {
 			if ( !this._hasAuth ) {
