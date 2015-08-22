@@ -13,92 +13,30 @@ What's in the box?
 
 ## Installation
 
-### Requirements
-Gulp
 ```
-npm install -g gulp
-```
-
-Yeoman
-```
-npm install -g yo
-```
-
-### Too Much Angular
-
-Install the generator through the [npm package](https://www.npmjs.com/package/generator-toomuchng).
-```
-npm install -g generator-toomuchng
+npm install -g gulp yo generator-toomuchng
 ```
 
 ## Usage
-
-First, create a project directory and cd into it. After that, run any/all of the below items:
 
 ### Scaffolding
 
 #### Generation
 ```
+mkdir my_new_project
+cd my_new_project
 yo toomuchng
 ```
 
-_Note: the following subcommands are for generating different components, it is recommended to use a capital letter as the first character._
+Before running the app for the first time, you will need to create a new package for your project:
 
-#### Collection
 ```
-yo toomuchng:collection
-? Collection name: Users
-? Model of collection: User
-   create assets/collections/Users.collection.js
-```
-
-#### Component
-Creating a new component will also generate html and sass files for you.
-```
-yo toomuchng:component
-? Component name: Navigation
-   create assets/components/Navigation.component.js
-```
-
-#### Directive
-```
-yo toomuchng:directive
-? Directive name: phone
-   create assets/directives/phone.directive.js
-```
-
-#### Filter
-```
-yo toomuchng:filter
-? Filter name: phoneFilter
-   create assets/filters/phoneFilter.filter.js
-```
-
-#### Model
-```
-yo toomuchng:model
-? Model name: User
-   create assets/models/User.model.js
-```
-
-#### Page
-Creating a new page will also generate html and sass files for you.
-```
-yo toomuchng:page
-? Page name: dashboard
-   create assets/pages/dashboard.page.js
-```
-
-#### Service
-```
-yo toomuchng:service
-? Service name: urlService
-   create assets/services/urlService.service.js
+npm init
 ```
 
 ### Running Your Shiny, New App
 
-There are prebuilt [gulp](http://gulpjs.com/) tasks for building, testing, and deploying your code.
+There are prebuilt [gulp](http://gulpjs.com/) tasks that are generated for building, testing, and deploying your code.
 
 #### Running
 The build task supports [live reload](http://livereload.com/), and file watching for changes - keeping development as streamlined as possible. To build and run on a local server, simply type:
@@ -122,7 +60,68 @@ gulp deploy
 ```
 
 
+### Scaffolding Subcomponents
+
+#### Collection
+Collections are objects purposed with holding their model counterparts. When creating a collection, you will also need to specify the model type that it will hold.
+```
+yo toomuchng:collection
+? Collection name: Users
+? Model of collection: User
+   create assets/collections/Users.collection.js
+```
+
+#### Component
+A component is a dynamic partial view. Creating a new component will gear you with a new [directive](https://docs.angularjs.org/guide/directive) file as well as html and sass files.
+```
+yo toomuchng:component
+? Component name: Navigation
+   create assets/components/Navigation.component.js
+```
+
+#### Directive
+For [directives](https://docs.angularjs.org/guide/directive) that do not need html or css, use this generator! Although this is used less, it pairs very nicely with filters.
+```
+yo toomuchng:directive
+? Directive name: phone
+   create assets/directives/phone.directive.js
+```
+
+#### Filter
+Creates a new [filter](https://docs.angularjs.org/guide/filter).
+```
+yo toomuchng:filter
+? Filter name: phoneFilter
+   create assets/filters/phoneFilter.filter.js
+```
+
+#### Model
+Model objects are used to hold business logic data. Be sure to checkout the collections generator.
+```
+yo toomuchng:model
+? Model name: User
+   create assets/models/User.model.js
+```
+
+#### Page
+Creating a new page generate [controller](https://docs.angularjs.org/guide/controller), html and sass files for you. Be sure to update your router file with the correct information.
+```
+yo toomuchng:page
+? Page name: dashboard
+   create assets/pages/dashboard.page.js
+```
+
+#### Service
+[Services](https://docs.angularjs.org/guide/services) are great for extraneous logic that you don't want cluttering your page controllers.
+```
+yo toomuchng:service
+? Service name: urlService
+   create assets/services/urlService.service.js
+```
+
+
 ## File Tree
+A sample file structure:
 
 <img align="middle" src="http://i.imgur.com/FP7pwoM.png">
 
