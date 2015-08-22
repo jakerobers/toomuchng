@@ -27,7 +27,7 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		this.fs.copyTpl(
 	      this.templatePath('entity.js'),
-	      this.destinationPath('assets/components/'+ this._fileName +'/'+ this._fileName +'.component.js'),
+	      this.destinationPath('assets/components/'+ this._fileName +'/'+ this._fileName +'.directive.js'),
 	      { entity: this._entityName }
 	    );
 
