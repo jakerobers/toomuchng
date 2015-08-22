@@ -1,6 +1,6 @@
 # Too Much Angular!
 
-<img align="right" src="logo.png">
+<img align="right" src="http://i.imgur.com/rsjm0ue.png">
 
 After writing yet another angular application, I figured it would be best to create a scaffolder fine-tuned to my needs.
 
