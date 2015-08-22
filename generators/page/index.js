@@ -27,19 +27,19 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		this.fs.copyTpl(
 	      this.templatePath('entity.js'),
-	      this.destinationPath('assets/pages/'+ this._fileName +'.page.js'),
+	      this.destinationPath('assets/pages/'+ this._fileName +'/'+ this._fileName +'.page.js'),
 	      { entity: this._entityName }
 	    );
 
 	    this.fs.copyTpl(
 	      this.templatePath('entity.html'),
-	      this.destinationPath('assets/pages/'+ this._fileName +'.template.html'),
+	      this.destinationPath('assets/pages/'+ this._fileName +'/'+ this._fileName +'.template.html'),
 	      { entity: this._entityName }
 	    );
 
 	    this.fs.copyTpl(
 	      this.templatePath('entity.sass'),
-	      this.destinationPath('assets/pages/'+ this._fileName +'.style.sass'),
+	      this.destinationPath('assets/pages/'+ this._fileName +'/'+ this._fileName +'.style.sass'),
 	      { entity: this._entityName }
 	    );
 	}
