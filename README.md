@@ -12,6 +12,7 @@ What's in the box?
  - Html templating
 
 ## Installation
+Install the generator through the [npm package](https://www.npmjs.com/package/generator-toomuchng).
 ```
 npm install -g generator-toomuchng
 ```
@@ -20,14 +21,16 @@ npm install -g generator-toomuchng
 
 First, create a project directory and cd into it. After that, run any/all of the below items:
 
-### Basic Scaffolding
+### Scaffolding
+
+#### Generation
 ```
 yo toomuchng
 ```
 
 _Note: the following subcommands are for generating different components, it is recommended to use a capital letter as the first character._
 
-### Collection
+#### Collection
 ```
 yo toomuchng:collection
 ? Collection name: Users
@@ -35,7 +38,7 @@ yo toomuchng:collection
    create assets/collections/Users.collection.js
 ```
 
-### Component
+#### Component
 Creating a new component will also generate html and sass files for you.
 ```
 yo toomuchng:component
@@ -43,28 +46,28 @@ yo toomuchng:component
    create assets/components/Navigation.component.js
 ```
 
-### Directive
+#### Directive
 ```
 yo toomuchng:directive
 ? Directive name: phone
    create assets/directives/phone.directive.js
 ```
 
-### Filter
+#### Filter
 ```
 yo toomuchng:filter
 ? Filter name: phoneFilter
    create assets/filters/phoneFilter.filter.js
 ```
 
-### Model
+#### Model
 ```
 yo toomuchng:model
 ? Model name: User
    create assets/models/User.model.js
 ```
 
-### Page
+#### Page
 Creating a new page will also generate html and sass files for you.
 ```
 yo toomuchng:page
@@ -72,12 +75,39 @@ yo toomuchng:page
    create assets/pages/dashboard.page.js
 ```
 
-### Service
+#### Service
 ```
 yo toomuchng:service
 ? Service name: urlService
    create assets/services/urlService.service.js
 ```
+
+### Running Your Shiny, New App
+
+There are prebuilt [gulp](http://gulpjs.com/) tasks for building, testing, and deploying your code.
+
+#### Running
+The build task supports [live reload](http://livereload.com/), and file watching for changes - keeping development as streamlined as possible. To build and run on a local server, simply type:
+
+```
+gulp
+```
+
+#### Testing
+Test specs use [phantomjs](http://phantomjs.org/), which will give access to the DOM for assertions. Karma is used for running the specs. See the karma.conf.js file as well as [karma documentation](http://karma-runner.github.io/0.13/index.html) for more info. Run tests with:
+```
+gulp spec
+```
+
+
+#### Deploying
+Currently, the only deploy option is to use an [AWS bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html), however more alternatives may be added in the future. It is required that you fill in your AWS id, password, and bucket in the `gulp_tasks/secrets.js` file. To deploy, use:
+
+```
+gulp deploy
+```
+
+
 ## File Tree
 
 <img align="middle" src="http://i.imgur.com/FP7pwoM.png">
