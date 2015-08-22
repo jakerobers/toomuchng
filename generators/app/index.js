@@ -201,48 +201,48 @@ module.exports = generators.Base.extend({
 		}
 	},
 
-	// install: {
-	// 	npm: function() {
-	// 		this.npmInstall(["aws-sdk",
-	// 			"del",
-	// 			"gulp",
-	// 			"gulp-awspublish",
-	// 			"gulp-concat",
-	// 			"gulp-connect",
-	// 			"gulp-flatten",
-	// 			"gulp-jasmine",
-	// 			"gulp-jshint",
-	// 			"gulp-jslint",
-	// 			"gulp-livereload",
-	// 			"gulp-load-plugins",
-	// 			"gulp-ng-annotate",
-	// 			"gulp-rename",
-	// 			"gulp-sass",
-	// 			"jasmine-core",
-	// 			"jshint-stylish",
-	// 			"karma",
-	// 			"karma-chrome-launcher",
-	// 			"karma-jasmine",
-	// 			"karma-phantomjs-launcher",
-	// 			"mime",
-	// 			"path",
-	// 			"phantomjs",
-	// 			"progress",
-	// 			"q",
-	// 			"run-sequence",
-	// 			"through2"],
-	// 		{ 'saveDev': true });
-	// 	},
-	// 	bower: function() {
-	// 		this.bowerInstall(["angular-route",
-	// 			"underscore",
-	// 			"bootstrap",
-	// 			"angular",
-	// 			"angular-mocks",
-	// 			"angular-resource",
-	// 			"angular-messages",
-	// 			"angular-websocket"],
-	// 		{ 'save': true });
-	// 	}
-	// }
+	install: {
+		npm: function() {
+			this.npmInstall(["aws-sdk",
+				"del",
+				"gulp",
+				"gulp-awspublish",
+				"gulp-concat",
+				"gulp-connect",
+				"gulp-flatten",
+				"gulp-jasmine",
+				"gulp-jshint",
+				"gulp-jslint",
+				"gulp-livereload",
+				"gulp-load-plugins",
+				"gulp-ng-annotate",
+				"gulp-rename",
+				"gulp-sass",
+				"jasmine-core",
+				"jshint-stylish",
+				"karma",
+				"karma-chrome-launcher",
+				"karma-jasmine",
+				"karma-phantomjs-launcher",
+				"mime",
+				"path",
+				"phantomjs",
+				"progress",
+				"q",
+				"run-sequence",
+				"through2"],
+			{ 'saveDev': true });
+		},
+		bower: function() {
+			this.bowerInstall(["angular-route",
+				"underscore",
+				"bootstrap",
+				"angular",
+				"angular-mocks",
+				"angular-resource",
+				"angular-messages",
+				"angular-websocket"],
+			{ 'save': true });
+		}
+	}
 });
