@@ -8,6 +8,10 @@ module.exports = generators.Base.extend({
 		var result = entity.split(' ')[0];
 	    return result.charAt(0).toUpperCase() + result.slice(1);
 	},
+	_fileNameFilter: function(filename) {
+		var result = filename.split(' ')[0];
+		return result.charAt(0).toLowerCase + result.slice(1);
+	},
 
 	prompting: function () {
 		var done = this.async();
@@ -25,7 +29,7 @@ module.exports = generators.Base.extend({
 
 		this.prompt(prompts, function (answers) {
 			this._collectionName = this._entityNameFilter(answers.collectionName) + "Collection";
-			this._fileName = answers.collectionName.toLowerCase();
+			this._fileName = this._fileNameFilter(answers.collectionName);
 			this._modelName = this._entityNameFilter(answers.modelName) + "Model";
 			done();
 		}.bind(this));
