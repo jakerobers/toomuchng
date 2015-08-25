@@ -7,6 +7,10 @@ module.exports = generators.Base.extend({
 		var result = entity.split(' ')[0];
 	    return result.charAt(0).toUpperCase() + result.slice(1);
 	},
+	_fileNameFilter: function(filename) {
+		var result = filename.split(' ')[0];
+		return result.charAt(0).toLowerCase + result.slice(1);
+	},
 
 	prompting: function () {
 		var done = this.async();
@@ -19,7 +23,7 @@ module.exports = generators.Base.extend({
 
 		this.prompt(prompts, function (answers) {
 			this._entityName = this._entityNameFilter(answers.entityName) + "Page";
-			this._fileName = answers.entityName.toLowerCase();
+			this._fileName = this._fileNameFilter(answers.entityName);
 			done();
 		}.bind(this));
 
