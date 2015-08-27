@@ -30,7 +30,7 @@ module.exports = generators.Base.extend({
 		this.prompt(prompts, function (answers) {
 			this._collectionName = this._entityNameFilter(answers.collectionName) + "Collection";
 			this._fileName = this._fileNameFilter(answers.collectionName);
-			this._modelName = this._entityNameFilter(answers.modelName) + "Model";
+			this._modelName = this._entityNameFilter(answers.modelName);
 			done();
 		}.bind(this));
 

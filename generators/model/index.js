@@ -27,7 +27,7 @@ module.exports = generators.Base.extend({
 		}];
 
 		this.prompt(prompts, function (answers) {
-			this._entityName = this._entityNameFilter(answers.entityName) + "Model";
+			this._entityName = this._entityNameFilter(answers.entityName);
 			this._fileName = this._fileNameFilter(answers.entityName);
 			this._endpoint = this._endpointNameFilter(answers.entityName);
 			done();
