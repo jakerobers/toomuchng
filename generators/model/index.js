@@ -9,7 +9,7 @@ module.exports = generators.Base.extend({
 	},
 	_fileNameFilter: function(filename) {
 		var result = filename.split(' ')[0];
-		return result.charAt(0).toLowerCase + result.slice(1);
+		return result.charAt(0).toLowerCase() + result.slice(1);
 	},
 
 	prompting: function () {
