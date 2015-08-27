@@ -26,7 +26,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', func
 	<%= entity %>.prototype = _.extend(<%= entity %>.prototype, {
 		attributes: [],
 		endpoint: function() {
-			return "";
+			return "/<%= endpoint %>";
 		},
 		type: "",
 		init: <%= entity %>,
