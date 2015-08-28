@@ -95,6 +95,16 @@ yo toomuchng:filter
    create assets/filters/phoneFilter.filter.js
 ```
 
+#### Modal
+Not to be confused with "Model", modals are used to create a window overlay. This is most commonly used for forms when editing or creating models.
+```
+yo toomuchng:modal
+? Modal name: User
+   create assets/modals/userModal.controller.js
+   create assets/modals/userModal.style.sass
+   create assets/modals/userModal.template.html
+```
+
 #### Model
 Model objects are used to hold business logic data. Be sure to checkout the collections generator.
 ```
