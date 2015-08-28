@@ -1,7 +1,7 @@
 app.directive('<%= entity %>', [function() {
 	return {
 	    restrict: 'AE',
-	    templateUrl: '/templates/<%= entity %>.template.html',
+	    templateUrl: '/templates/<%= filename %>.template.html',
 	    link: function($scope, element, attributes) {
 
 	    }
