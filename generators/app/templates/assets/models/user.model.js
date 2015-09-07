@@ -1,4 +1,5 @@
-app.factory('User', function($http, $resource, ngAuthSettings, BaseModel) {
+app.constant('UserAttributes', ['email', 'password'])
+app.factory('User', function($http, $resource, ngAuthSettings, BaseModel, UserAttributes) {
 	var User = function(params) {
 		var self = _.extend({}, this);
 		_.each(User.prototype.attributes, function(val) {
@@ -14,7 +15,7 @@ app.factory('User', function($http, $resource, ngAuthSettings, BaseModel) {
 	};
 	User.prototype = Object.create(BaseModel.prototype);
 	User.prototype = _.extend(User.prototype, {
-		attributes: ['email', 'password'],
+		attributes: UserAttributes,
 		endpoint: function() {
 			return "/users";
 		},
