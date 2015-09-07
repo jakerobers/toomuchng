@@ -253,6 +253,7 @@ module.exports = generators.Base.extend({
 			this.bowerInstall([
 				"angular-route",
 				"underscore",
+				"jsonapicompressor",
 				"bootstrap",
 				"angular",
 				"angular-mocks",

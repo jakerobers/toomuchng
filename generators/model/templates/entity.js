@@ -1,4 +1,5 @@
-app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', function(ngAuthSettings, $http, $q, BaseModel) {
+app.constant('<%= entity %>Attributes', [])
+app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%= entity %>Attributes', function(ngAuthSettings, $http, $q, BaseModel, <%= entity %>Attributes) {
 	var <%= entity %> = function(params) {
 		var self = _.extend({}, this);
 		if ( _.isArray(params) ) {
@@ -37,7 +38,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', func
 
 		compress: function() {
 			return new JsonApiCompressor(this)
-				.attributes()
+				.attributes(<%= entity %>Attributes)
 				.done();
 		}
 	});
