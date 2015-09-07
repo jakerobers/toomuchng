@@ -1,4 +1,5 @@
-app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', function(ngAuthSettings, $http, $q, BaseModel) {
+app.constant('<%= entity %>Attributes', [])
+app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%= entity %>Attributes', function(ngAuthSettings, $http, $q, BaseModel, <%= entity %>Attributes) {
 	var <%= entity %> = function(params) {
 		var self = _.extend({}, this);
 		if ( _.isArray(params) ) {
@@ -10,9 +11,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', func
 			}
 		}.bind(self));
 
-		if ( params.manager ) {
-			self.manager = User.prototype.init(params.manager);
-		}
+		//insert other relationship data
 
 		if ( params.id ) {
 			self.id = params.id;
@@ -24,7 +23,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', func
 
 	<%= entity %>.prototype = Object.create(BaseModel.prototype);
 	<%= entity %>.prototype = _.extend(<%= entity %>.prototype, {
-		attributes: [],
+		attributes: <%= entity %>Attributes,
 		endpoint: function() {
 			return "/<%= endpoint %>";
 		},
@@ -37,7 +36,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', func
 
 		compress: function() {
 			return new JsonApiCompressor(this)
-				.attributes()
+				.attributes(<%= entity %>.prototype.attributes)
 				.done();
 		}
 	});
