@@ -1,5 +1,5 @@
 app.constant('<%= entity %>Attributes', [])
-app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%= entity %>Attributes', function(ngAuthSettings, $http, $q, BaseModel, <%= entity %>Attributes) {
+app.factory('<%= entity %>', function(ngAuthSettings, $http, $q, BaseModel, <%= entity %>Attributes) {
 	var <%= entity %> = function(params) {
 		var self = _.extend({}, this);
 		if ( _.isArray(params) ) {
@@ -43,4 +43,4 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%=
 
 
 	return <%= entity %>;
-}]);
+});

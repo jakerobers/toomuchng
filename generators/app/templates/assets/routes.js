@@ -1,4 +1,4 @@
-app.config(['$routeProvider', function($routeProvider) {
+app.config(function($routeProvider) {
 
 	//todo: sample route given below.
 	var routes = {
@@ -14,4 +14,4 @@ app.config(['$routeProvider', function($routeProvider) {
 	.otherwise({
 		redirectTo: routes.dashboardRoute
 	});
-}]);
+});

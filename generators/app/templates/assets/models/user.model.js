@@ -1,4 +1,4 @@
-app.factory('User', ['$http', '$resource', 'ngAuthSettings', 'BaseModel', function($http, $resource, ngAuthSettings, BaseModel) {
+app.factory('User', function($http, $resource, ngAuthSettings, BaseModel) {
 	var User = function(params) {
 		var self = _.extend({}, this);
 		_.each(User.prototype.attributes, function(val) {
@@ -30,4 +30,4 @@ app.factory('User', ['$http', '$resource', 'ngAuthSettings', 'BaseModel', functi
 	});
 
 	return User;
-}]);
+});
