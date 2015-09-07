@@ -1,4 +1,4 @@
-app.factory('BaseCollection', ['ngAuthSettings', 'httpOptions', '$http', '$q', function(ngAuthSettings, httpOptions, $http, $q) {
+app.factory('BaseCollection', function(ngAuthSettings, httpOptions, $http, $q) {
 	var BaseCollection = function() {
 		//check for model
 	};
@@ -51,4 +51,4 @@ app.factory('BaseCollection', ['ngAuthSettings', 'httpOptions', '$http', '$q', f
 		}
 	}
 	return BaseCollection;
-}]);
+});

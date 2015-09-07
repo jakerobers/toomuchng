@@ -1,4 +1,4 @@
-app.directive('<%= entity %>', [function() {
+app.directive('<%= entity %>', function() {
 	return {
 	    restrict: 'AE',
 	    templateUrl: '/templates/<%= filename %>.template.html',
@@ -6,4 +6,4 @@ app.directive('<%= entity %>', [function() {
 
 	    }
 	}
-}]);
+});

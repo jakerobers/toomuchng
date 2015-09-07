@@ -1,4 +1,4 @@
-app.factory('BaseModel', ['ngAuthSettings', '$http', 'httpOptions', '$q', function(ngAuthSettings, $http, httpOptions, $q) {
+app.factory('BaseModel', function(ngAuthSettings, $http, httpOptions, $q) {
 	var BaseModel = function() {
 
 	};
@@ -83,4 +83,4 @@ app.factory('BaseModel', ['ngAuthSettings', '$http', 'httpOptions', '$q', functi
 	};
 
 	return BaseModel;
-}]);
+});

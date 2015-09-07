@@ -1,3 +1,3 @@
-app.controller('DashboardCtrl', ['$scope', function($scope) {
+app.controller('DashboardCtrl', function($scope) {
 
-}]);
+});
