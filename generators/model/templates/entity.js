@@ -11,9 +11,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%=
 			}
 		}.bind(self));
 
-		if ( params.manager ) {
-			self.manager = User.prototype.init(params.manager);
-		}
+		//insert other relationship data
 
 		if ( params.id ) {
 			self.id = params.id;
@@ -25,7 +23,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%=
 
 	<%= entity %>.prototype = Object.create(BaseModel.prototype);
 	<%= entity %>.prototype = _.extend(<%= entity %>.prototype, {
-		attributes: [],
+		attributes: <%= entity %>Attributes,
 		endpoint: function() {
 			return "/<%= endpoint %>";
 		},
@@ -38,7 +36,7 @@ app.factory('<%= entity %>', ['ngAuthSettings', '$http', '$q', 'BaseModel', '<%=
 
 		compress: function() {
 			return new JsonApiCompressor(this)
-				.attributes(<%= entity %>Attributes)
+				.attributes(<%= entity %>.prototype.attributes)
 				.done();
 		}
 	});

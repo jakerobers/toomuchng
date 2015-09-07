@@ -4,6 +4,6 @@ var gulp = require("gulp"),
 	config = require('./config');
 
 
-gulp.task("clean", function(finish) {
-	del(config.build_dir, finish)
+gulp.task("clean", function() {
+	del(config.build_dir)
 });
