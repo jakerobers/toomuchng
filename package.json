@@ -1,6 +1,6 @@
 {
   "name": "generator-toomuchng",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "An angular generator with gulp and bootstrap",
   "main": "generators/app/index.js",
   "files": [
