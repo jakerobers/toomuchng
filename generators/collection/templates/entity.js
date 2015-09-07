@@ -1,4 +1,4 @@
-app.factory('<%= collection %>', ['<%= model %>', 'BaseCollection', function(<%= model %>, BaseCollection) {
+app.factory('<%= collection %>', function(<%= model %>, BaseCollection) {
 	var <%= collection %> = function(params) {
 		var self = _.extend({}, this);
 		self.collection = [];
@@ -16,4 +16,4 @@ app.factory('<%= collection %>', ['<%= model %>', 'BaseCollection', function(<%=
 	});
 
 	return <%= collection %>;
-}]);
+});

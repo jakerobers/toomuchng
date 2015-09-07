@@ -2,6 +2,7 @@ var gulp = require("gulp"),
 	plugins = require('gulp-load-plugins')(),
 	stylish = require('jshint-stylish'),
 	config = require('./config'),
+	ngAnnotate = require('gulp-ng-annotate'),
 	runSequence = require("run-sequence"),
 	jshint_options = {
 		bitwise: false,
@@ -38,6 +39,7 @@ var gulp = require("gulp"),
 gulp.task("web:js", function() {
 	return gulp.src(paths.js.web.input)
 		.pipe(plugins.concat(paths.js.web.output.file))
+		.pipe(ngAnnotate())
 		.pipe(gulp.dest(paths.js.web.output.dir))
 		.pipe(plugins.connect.reload());
 });

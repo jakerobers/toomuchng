@@ -1,5 +1,4 @@
-app.controller('<%= entity %>Ctrl', ['$scope', '$modalInstance',
-function($scope, $modalInstance) {
+app.controller('<%= entity %>Ctrl', function($scope, $modalInstance) {
 
 	/**
 	 * Place the commented code below in the component where the modal
@@ -32,4 +31,4 @@ function($scope, $modalInstance) {
 	$scope.cancel = function () {
 		$modalInstance.dismiss('cancel');
 	};
-}]);
+});

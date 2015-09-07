@@ -1,3 +1,3 @@
-app.controller('<%= entity %>Ctrl', ['$scope', function($scope) {
+app.controller('<%= entity %>Ctrl', function($scope) {
 
-}]);
+});

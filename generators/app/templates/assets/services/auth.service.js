@@ -1,5 +1,4 @@
-app.service('AuthService', [ '$http', '$rootScope', '$window', 'ngAuthSettings', 'Session', 'AUTH_EVENTS', '$q', 'UserModel',
-function($http, $rootScope, $window, ngAuthSettings, Session, AUTH_EVENTS, $q, User) {
+app.service('AuthService', function($http, $rootScope, $window, ngAuthSettings, Session, AUTH_EVENTS, $q, User) {
 
 	//the login function
 	this.login = function(user, remember) {
@@ -82,4 +81,4 @@ function($http, $rootScope, $window, ngAuthSettings, Session, AUTH_EVENTS, $q, U
 	}
 
 	return this;
-}]);
+});
