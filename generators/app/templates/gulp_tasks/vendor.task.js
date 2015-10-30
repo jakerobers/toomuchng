@@ -13,15 +13,11 @@ var gulp = require("gulp"),
 					input: [
 						"bower_components/jquery/dist/jquery.min.js",
 						"bower_components/underscore/underscore-min.js",
-						"vendor/jsonapi_expander.js",
-						"bower_components/dist/jsonapicompressor.js",
 						"bower_components/angular/angular.js",
 						"bower_components/angular-route/angular-route.js",
 						"bower_components/angular-resource/angular-resource.js",
 						"bower_components/angular-mocks/angular-mocks.js",
 						"bower_components/angular-messages/angular-messages.js",
-						"bower_components/angular-bootstrap/ui-bootstrap.js",
-						"bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
 						"bower_components/angular-websocket/angular-websocket.js"
 					],
 
@@ -34,7 +30,6 @@ var gulp = require("gulp"),
 			css: {
 				web: {
 					input: [
-						"bower_components/bootstrap/dist/css/bootstrap.min.css",
 						"bower_components/components-font-awesome/css/font-awesome.min.css"
 					],
 
@@ -47,7 +42,6 @@ var gulp = require("gulp"),
 			fonts: {
 				web: {
 					input: [
-						"bower_components/bootstrap/fonts/*",
 						"bower_components/components-font-awesome/fonts/*"
 					],
 					output: {
