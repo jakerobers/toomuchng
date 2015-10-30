@@ -23,7 +23,6 @@ module.exports = generators.Base.extend({
 
 		this.prompt(prompts, function (answers) {
 			this._entityName = this._entityNameFilter(answers.entityName) + "Page";
-			this._fileName = this._fileNameFilter(answers.entityName);
 			done();
 		}.bind(this));
 
@@ -31,19 +30,19 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		this.fs.copyTpl(
 	      this.templatePath('entity.js'),
-	      this.destinationPath('assets/pages/'+ this._fileName +'/'+ this._fileName +'.controller.js'),
+	      this.destinationPath(this._entityName +'.controller.js'),
 	      { entity: this._entityName }
 	    );
 
 	    this.fs.copyTpl(
 	      this.templatePath('entity.html'),
-	      this.destinationPath('assets/pages/'+ this._fileName +'/'+ this._fileName +'.template.html'),
+	      this.destinationPath('assets/pages/'+ this._entityName +'/'+ this._entityName +'.template.html'),
 	      { entity: this._entityName }
 	    );
 
 	    this.fs.copyTpl(
 	      this.templatePath('entity.sass'),
-	      this.destinationPath('assets/pages/'+ this._fileName +'/'+ this._fileName +'.style.sass'),
+	      this.destinationPath('assets/pages/'+ this._entityName +'/'+ this._entityName +'.style.sass'),
 	      { entity: this._entityName }
 	    );
 	}

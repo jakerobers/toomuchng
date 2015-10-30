@@ -23,7 +23,6 @@ module.exports = generators.Base.extend({
 
 		this.prompt(prompts, function (answers) {
 			this._entityName = this._entityNameFilter(answers.entityName) + "Service";
-			this._fileName = this._fileNameFilter(answers.entityName);
 			done();
 		}.bind(this));
 
@@ -31,7 +30,7 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		this.fs.copyTpl(
 	      this.templatePath('entity.js'),
-	      this.destinationPath('assets/services/'+ this._fileName +'.service.js'),
+	      this.destinationPath('assets/services/'+ this._entityName +'.service.js'),
 	      { entity: this._entityName }
 	    );
 	}

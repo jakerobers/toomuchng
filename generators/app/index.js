@@ -2,40 +2,6 @@ var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
 	_hasAuth: false,
-	_generateAuth: function() {
-		this.fs.copyTpl(
-			this.templatePath('assets/services/auth.service.js'),
-			this.destinationPath('assets/services/auth.service.js')
-		);
-
-		this.fs.copyTpl(
-			this.templatePath('assets/services/session.service.js'),
-			this.destinationPath('assets/services/session.service.js')
-		);
-
-		this.fs.copyTpl(
-			this.templatePath('assets/models/user.model.js'),
-			this.destinationPath('assets/models/user.model.js')
-		);
-	},
-
-	prompting: function () {
-		var done = this.async();
-		var prompts = [{
-			type    : 'confirm',
-			name    : 'hasAuth',
-			message : 'Should we generate an auth service and user models?',
-			default : false
-		}];
-
-		this.prompt(prompts, function (answers) {
-			if ( answers.hasAuth ) {
-				this._hasAuth = true;
-			}
-			done();
-		}.bind(this));
-
-	},
 
 	writing: {
 		root: function() {
@@ -51,11 +17,6 @@ module.exports = generators.Base.extend({
 		},
 
 		assets: function() {
-
-			if ( this._hasAuth ) {
-				this._generateAuth();
-			}
-
 			this.fs.copyTpl(
 				this.templatePath('assets/app.js'),
 				this.destinationPath('assets/app.js')
@@ -173,49 +134,38 @@ module.exports = generators.Base.extend({
 		      this.destinationPath('gulp_tasks/watch.task.js')
 		    );
 		},
-		collections: function() {
-			this.fs.copyTpl(
-		      this.templatePath('assets/collections/base.collection.js'),
-		      this.destinationPath('assets/collections/base.collection.js')
-		    );
-		},
-		components: function() {
-			this.mkdir('assets/components');
-		},
 		fonts: function() {
-			this.mkdir('assets/fonts');
+			this.mkdir('assets/media/fonts');
 		},
 		images: function() {
-			this.mkdir('assets/images');
+			this.mkdir('assets/media/images');
 		},
 		pages: function() {
 			this.fs.copyTpl(
-		      this.templatePath('assets/pages/dashboard.controller.js'),
-		      this.destinationPath('assets/pages/dashboard.controller.js')
-		    );
-		    this.fs.copyTpl(
-		      this.templatePath('assets/pages/dashboard.style.sass'),
-		      this.destinationPath('assets/pages/dashboard.style.sass')
-		    );
-		    this.fs.copyTpl(
-		      this.templatePath('assets/pages/dashboard.template.html'),
-		      this.destinationPath('assets/pages/dashboard.template.html')
-		    );
+	      this.templatePath('assets/dashboard/dashboard.controller.js'),
+	      this.destinationPath('assets/dashboard/dashboard.web.js')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/dashboard/dashboard.controller.js'),
+	      this.destinationPath('assets/dashboard/dashboard.mobile.js')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/dashboard/dashboard.style.sass'),
+	      this.destinationPath('assets/dashboard/dashboard.web.sass')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/dashboard/dashboard.style.sass'),
+	      this.destinationPath('assets/dashboard/dashboard.mobile.sass')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/dashboard/dashboard.template.html'),
+	      this.destinationPath('assets/dashboard/dashboard.web.html')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/dashboard/dashboard.template.html'),
+	      this.destinationPath('assets/dashboard/dashboard.mobile.html')
+	    );
 		},
-		services: function() {
-			if ( !this._hasAuth ) {
-				this.mkdir('assets/services');
-			}
-		},
-		models: function() {
-			this.fs.copyTpl(
-		      this.templatePath('assets/models/base.model.js'),
-		      this.destinationPath('assets/models/base.model.js')
-		    );
-		},
-		vendor: function() {
-			this.mkdir('assets/vendor');
-		}
 	},
 
 	install: {
@@ -244,7 +194,6 @@ module.exports = generators.Base.extend({
 				"path",
 				"phantomjs",
 				"progress",
-				"q",
 				"run-sequence",
 				"through2"
 			], { 'saveDev': true });
@@ -253,8 +202,6 @@ module.exports = generators.Base.extend({
 			this.bowerInstall([
 				"angular-route",
 				"underscore",
-				"jsonapicompressor",
-				"bootstrap",
 				"angular",
 				"angular-mocks",
 				"angular-resource",

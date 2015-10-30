@@ -1,14 +1,26 @@
-<!DOCTYPE html>
 <html lang="en">
-    <head>
-    	<title>Example</title>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="vendor.css">
-        <link rel="stylesheet" type="text/css" href="app.css">
-    	<script type="text/javascript" src="vendor.js"></script>
-    </head>
-    <body ng-app="app">
-        <div class="content" ng-view></div>
-        <script type="text/javascript" src="app.js"></script>
-    </body>
+  <head>
+    <script type="text/javascript">
+      var MOBILE_SCREEN_WIDTH = 768;
+
+      var origin = window.location.protocol + "//" + window.location.host,
+          hash = window.location.hash;
+      
+      if(hash.indexOf("#") === 0) {
+        hash = hash.slice(1);
+      }
+
+      if(hash.length > 0) {
+        hash = "#" + hash;
+      }
+
+      if (window.outerWidth <= MOBILE_SCREEN_WIDTH) {
+        window.location.href = origin + "/mobile" + hash
+      } else  {
+        window.location.href = origin + "/web" + hash
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
