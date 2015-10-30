@@ -18,43 +18,79 @@ module.exports = generators.Base.extend({
 
 		assets: function() {
 			this.fs.copyTpl(
-				this.templatePath('assets/app.js'),
-				this.destinationPath('assets/app.js')
+				this.templatePath('assets/web/app.js'),
+				this.destinationPath('assets/web/app.js')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/app.js'),
+				this.destinationPath('assets/mobile/app.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/constants.js'),
-				this.destinationPath('assets/constants.js')
+				this.templatePath('assets/web/constants.js'),
+				this.destinationPath('assets/web/constants.js')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/constants.js'),
+				this.destinationPath('assets/mobile/constants.js')
 			);
 
 			this.fs.copyTpl(
 				this.templatePath('assets/index.html'),
 				this.destinationPath('assets/index.html')
 			);
-
 			this.fs.copyTpl(
-				this.templatePath('assets/layout.style.sass'),
-				this.destinationPath('assets/layout.style.sass')
+				this.templatePath('assets/web/index.html'),
+				this.destinationPath('assets/web/index.html')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/index.html'),
+				this.destinationPath('assets/mobile/index.html')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/mixins.style.sass'),
-				this.destinationPath('assets/mixins.style.sass')
+				this.templatePath('assets/web/layout.web.sass'),
+				this.destinationPath('assets/web/layout.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/layout.mobile.sass'),
+				this.destinationPath('assets/mobile/layout.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/routes.js'),
-				this.destinationPath('assets/routes.js')
+				this.templatePath('assets/web/mixins.web.sass'),
+				this.destinationPath('assets/web/mixins.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/mixins.mobile.sass'),
+				this.destinationPath('assets/mobile/mixins.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/style.sass'),
-				this.destinationPath('assets/style.sass')
+				this.templatePath('assets/web/routes.js'),
+				this.destinationPath('assets/web/routes.js')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/routes.js'),
+				this.destinationPath('assets/mobile/routes.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/variables.style.sass'),
-				this.destinationPath('assets/variables.style.sass')
+				this.templatePath('assets/web/style.web.sass'),
+				this.destinationPath('assets/web/style.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/style.mobile.sass'),
+				this.destinationPath('assets/mobile/style.mobile.sass')
+			);
+
+			this.fs.copyTpl(
+				this.templatePath('assets/web/variables.web.sass'),
+				this.destinationPath('assets/web/variables.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/mobile/variables.mobile.sass'),
+				this.destinationPath('assets/mobile/variables.mobile.sass')
 			);
 		},
 
@@ -183,6 +219,7 @@ module.exports = generators.Base.extend({
 				"gulp-livereload",
 				"gulp-load-plugins",
 				"gulp-ng-annotate",
+				"gulp-plumber",
 				"gulp-rename",
 				"gulp-sass",
 				"jasmine-core",
