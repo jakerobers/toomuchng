@@ -3,7 +3,7 @@ app.config(function($routeProvider) {
 	//todo: sample route given below.
 	var routes = {
 		dashboardRoute: {
-			templateUrl: 'templates/dashboard.template.html',
+			templateUrl: 'templates/dashboard.web.html',
 	 	 controller: 'DashboardCtrl',
 		}
 	};

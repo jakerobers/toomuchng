@@ -247,7 +247,6 @@ module.exports = generators.Base.extend({
 				"angular-mocks",
 				"angular-resource",
 				"angular-messages",
-				"angular-bootstrap",
 				"angular-websocket"
 			], { 'save': true });
 		}
