@@ -46,6 +46,9 @@ gulp.task("web:css", function() {
 	    .pipe(plugins.plumber(config.showError))
 		.pipe(plugins.sass(compile_options))
 		.pipe(plugins.concat(paths.css.web.output.file))
+		.pipe(plugins.sourcemaps.init())
+	    .pipe(plugins.minifyCss())
+    .pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(paths.css.web.output.dir))
 		.pipe(plugins.connect.reload());
 });
@@ -61,6 +64,9 @@ gulp.task("mobile:css", function() {
 	    .pipe(plugins.plumber(config.showError))
 		.pipe(plugins.sass(compile_options))
 		.pipe(plugins.concat(paths.css.mobile.output.file))
+		.pipe(plugins.sourcemaps.init())
+	    .pipe(plugins.minifyCss())
+    .pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(paths.css.mobile.output.dir))
 		.pipe(plugins.connect.reload());
 });

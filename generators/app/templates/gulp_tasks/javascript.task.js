@@ -36,16 +36,22 @@ var gulp = require("gulp"),
 				],
 				output: {
 					file: "app.js",
-					dir: config.web_dir
+					dir: config.mobile_dir
 				}
 			}
 		}
 	};
 
+/*****************************************
+*										WEB
+******************************************/
 gulp.task("web:js", function() {
 	return gulp.src(paths.js.web.input)
 		.pipe(plugins.concat(paths.js.web.output.file))
 		.pipe(ngAnnotate())
+		.pipe(plugins.sourcemaps.init())
+			.pipe(plugins.uglify())
+		.pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(paths.js.web.output.dir))
 		.pipe(plugins.connect.reload());
 });
@@ -65,11 +71,18 @@ gulp.task("web:scripts", function() {
 });
 
 
+/*****************************************
+*									MOBILE
+******************************************/
+
 
 gulp.task("mobile:js", function() {
 	return gulp.src(paths.js.mobile.input)
 		.pipe(plugins.concat(paths.js.mobile.output.file))
 		.pipe(ngAnnotate())
+		.pipe(plugins.sourcemaps.init())
+			.pipe(plugins.uglify())
+		.pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(paths.js.mobile.output.dir))
 		.pipe(plugins.connect.reload());
 });

@@ -34,11 +34,16 @@ var gulp = require("gulp"),
 				}
 			}
 		}
-	};
+	},
+	minify_options = {
+    conditionals: true,
+    spare:true
+  };
 
 
 gulp.task("web:html:index", function() {
 	return gulp.src(paths.html.web.input.index)
+		.pipe(plugins.minifyHtml(minify_options))
 		.pipe(gulp.dest(paths.html.web.output.file))
 		.pipe(plugins.connect.reload());
 });
@@ -46,6 +51,7 @@ gulp.task("web:html:index", function() {
 gulp.task("web:html:templates", function() {
 	return gulp.src(paths.html.web.input.templates)
 		.pipe(plugins.flatten())
+		.pipe(plugins.minifyHtml(minify_options))
 		.pipe(gulp.dest(paths.html.web.output.dir))
 		.pipe(plugins.connect.reload());
 });
@@ -62,6 +68,7 @@ gulp.task("web:watch:html", function() {
 
 gulp.task("mobile:html:index", function() {
 	return gulp.src(paths.html.mobile.input.index)
+		.pipe(plugins.minifyHtml(minify_options))
 		.pipe(gulp.dest(paths.html.mobile.output.file))
 		.pipe(plugins.connect.reload());
 });
@@ -69,6 +76,7 @@ gulp.task("mobile:html:index", function() {
 gulp.task("mobile:html:templates", function() {
 	return gulp.src(paths.html.mobile.input.templates)
 		.pipe(plugins.flatten())
+		.pipe(plugins.minifyHtml(minify_options))
 		.pipe(gulp.dest(paths.html.mobile.output.dir))
 		.pipe(plugins.connect.reload());
 });
@@ -84,6 +92,7 @@ gulp.task("mobile:html", ["mobile:html:templates", "mobile:html:index"]);
 
 gulp.task("root:html:index", function() {
 	return gulp.src(paths.html.root.input.index)
+		.pipe(plugins.minifyHtml(minify_options))
 		.pipe(gulp.dest(paths.html.root.output))
 		.pipe(plugins.connect.reload());
 });
