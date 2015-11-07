@@ -4,21 +4,21 @@ var gulp = require('gulp'),
 	config = require('./config.js'),
 	paths = {
 		fonts: {
-			web: {
-				input: ['assets/fonts/**/*.*'],
+			media: {
+				input: ['assets/media/fonts/**/*.*'],
 				output: {
-					dir: config.web_dir + "/fonts/"
+					dir: config.build_dir + "/fonts/"
 				}
 			}
 		}
 	};
 
-gulp.task('web:fonts', function() {
-	gulp.src(paths.fonts.web.input)
-	    .pipe(gulp.dest(paths.fonts.web.output.dir))
+gulp.task('media:fonts', function() {
+	gulp.src(paths.fonts.media.input)
+	    .pipe(gulp.dest(paths.fonts.media.output.dir))
 	    .pipe(plugins.connect.reload())
 });
 
-gulp.task('web:watch:fonts', function() {
-	gulp.watch( paths.vendor_fonts.web.input, ['web:fonts'] )
+gulp.task('media:watch:fonts', function() {
+	gulp.watch( paths.vendor_fonts.media.input, ['media:fonts'] )
 });

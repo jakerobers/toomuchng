@@ -5,5 +5,21 @@ gulp.task("web:build", [
 	'web:scripts',
 	'web:html',
 	'web:css',
-	'web:images'
+]);
+
+gulp.task("mobile:build", [
+  'mobile:vendor',
+  'mobile:scripts',
+  'mobile:html',
+  'mobile:css',
+]);
+
+gulp.task("media:build", [
+  'media:fonts',
+  'media:images'
+]);
+
+gulp.task("root:build", [
+  "root:vendor",
+  "root:html:index"
 ]);

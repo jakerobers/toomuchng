@@ -17,23 +17,27 @@ require("./gulp_tasks/spec.task.js");
 
 
 gulp.task("web", function() {
-	return runSequence("clean", "web:build", "web:watch", "web:serve");
+  return runSequence("web:build", "web:watch");
 });
 
-
-gulp.task("web:deploy:dev", function() {
-	return runSequence("web:push:dev");
+gulp.task("mobile", function() {
+  return runSequence("mobile:build", "mobile:watch");
 });
 
-gulp.task("web:deploy:prod", function() {
-	return runSequence("web:push:prod");
+gulp.task("root", function() {
+  return runSequence("root:build");
+});
+
+gulp.task("build", function() {
+  return runSequence("clean", "root", "web", "mobile", "serve");
 });
 
 gulp.task("spec", function() {
-	return runSequence("clean", "web:build", "test");
+  return runSequence("clean", "root:build", "web:build", "mobile:build", "test");
 });
 
+
 gulp.task("lint", ["web:lint"]);
-gulp.task("default", ["web"]);
-gulp.task("deploy", ["web:deploy:dev"]);
+gulp.task("default", ["build"]);
+gulp.task("deploy", ["push:dev"]);
 

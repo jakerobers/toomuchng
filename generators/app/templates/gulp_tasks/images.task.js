@@ -3,24 +3,24 @@ var gulp = require("gulp"),
 	config = require('./config'),
 	paths = {
 		images: {
-			web: {
+			media: {
 				input: [
-					'assets/images/**.*'
+					'assets/media/images/**.*'
 				],
 				output: {
-					dir: config.web_dir + "/images/"
+					dir: config.build_dir + "/images/"
 				}
 			}
 		}
 	};
 
-gulp.task("web:images", function() {
-	return gulp.src(paths.images.web.input)
+gulp.task("media:images", function() {
+	return gulp.src(paths.images.media.input)
 		.pipe(plugins.flatten())
-		.pipe(gulp.dest(paths.images.web.output.dir))
+		.pipe(gulp.dest(paths.images.media.output.dir))
 		.pipe(plugins.connect.reload());
 });
 
-gulp.task("web:watch:images", function() {
-	return gulp.watch(paths.images.web.input, ["web:images"]);
+gulp.task("media:watch:images", function() {
+	return gulp.watch(paths.images.media.input, ["media:images"]);
 });
