@@ -158,11 +158,6 @@ module.exports = generators.Base.extend({
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('gulp_tasks/spec.task.js'),
-		      this.destinationPath('gulp_tasks/spec.task.js')
-		    );
-
-		    this.fs.copyTpl(
 		      this.templatePath('gulp_tasks/vendor.task.js'),
 		      this.destinationPath('gulp_tasks/vendor.task.js')
 		    );
