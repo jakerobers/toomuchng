@@ -18,21 +18,21 @@ module.exports = generators.Base.extend({
 
 		assets: function() {
 			this.fs.copyTpl(
-				this.templatePath('assets/web/app.js'),
-				this.destinationPath('assets/web/app.js')
+				this.templatePath('assets/applications/web/app.js'),
+				this.destinationPath('assets/applications/web/app.js')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/app.js'),
-				this.destinationPath('assets/mobile/app.js')
+				this.templatePath('assets/applications/mobile/app.js'),
+				this.destinationPath('assets/applications/mobile/app.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/web/constants.js'),
-				this.destinationPath('assets/web/constants.js')
+				this.templatePath('assets/applications/web/constants.js'),
+				this.destinationPath('assets/applications/web/constants.js')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/constants.js'),
-				this.destinationPath('assets/mobile/constants.js')
+				this.templatePath('assets/applications/mobile/constants.js'),
+				this.destinationPath('assets/applications/mobile/constants.js')
 			);
 
 			this.fs.copyTpl(
@@ -40,58 +40,65 @@ module.exports = generators.Base.extend({
 				this.destinationPath('assets/index.html')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/web/index.html'),
-				this.destinationPath('assets/web/index.html')
+				this.templatePath('assets/applications/web/index.html'),
+				this.destinationPath('assets/applications/web/index.html')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/index.html'),
-				this.destinationPath('assets/mobile/index.html')
+				this.templatePath('assets/applications/mobile/index.html'),
+				this.destinationPath('assets/applications/mobile/index.html')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/web/layout.web.sass'),
-				this.destinationPath('assets/web/layout.web.sass')
+				this.templatePath('assets/applications/web/layout.web.sass'),
+				this.destinationPath('assets/applications/web/layout.web.sass')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/layout.mobile.sass'),
-				this.destinationPath('assets/mobile/layout.mobile.sass')
+				this.templatePath('assets/applications/mobile/layout.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/layout.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/web/mixins.web.sass'),
-				this.destinationPath('assets/web/mixins.web.sass')
+				this.templatePath('assets/applications/web/mixins.web.sass'),
+				this.destinationPath('assets/applications/web/mixins.web.sass')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/mixins.mobile.sass'),
-				this.destinationPath('assets/mobile/mixins.mobile.sass')
+				this.templatePath('assets/applications/mobile/mixins.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/mixins.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/web/routes.js'),
-				this.destinationPath('assets/web/routes.js')
+				this.templatePath('assets/applications/web/routes.js'),
+				this.destinationPath('assets/applications/web/routes.js')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/routes.js'),
-				this.destinationPath('assets/mobile/routes.js')
+				this.templatePath('assets/applications/mobile/routes.js'),
+				this.destinationPath('assets/applications/mobile/routes.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/web/style.web.sass'),
-				this.destinationPath('assets/web/style.web.sass')
+				this.templatePath('assets/applications/web/style.web.sass'),
+				this.destinationPath('assets/applications/web/style.web.sass')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/style.mobile.sass'),
-				this.destinationPath('assets/mobile/style.mobile.sass')
+				this.templatePath('assets/applications/mobile/style.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/style.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/web/variables.web.sass'),
-				this.destinationPath('assets/web/variables.web.sass')
+				this.templatePath('assets/applications/web/variables.web.sass'),
+				this.destinationPath('assets/applications/web/variables.web.sass')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/mobile/variables.mobile.sass'),
-				this.destinationPath('assets/mobile/variables.mobile.sass')
+				this.templatePath('assets/applications/mobile/variables.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/variables.mobile.sass')
 			);
+		},
+
+		collections: function() {
+			this.mkdir('assets/collections');
+		},
+		constants: function() {
+			this.mkdir('assets/constants');
 		},
 
 		gulp: function() {
@@ -171,35 +178,38 @@ module.exports = generators.Base.extend({
 		    );
 		},
 		fonts: function() {
-			this.mkdir('assets/media/fonts');
+			this.mkdir('assets/static/fonts');
 		},
 		images: function() {
-			this.mkdir('assets/media/images');
+			this.mkdir('assets/static/images');
+		},
+		models: function() {
+			this.mkdir('assets/models');
 		},
 		pages: function() {
 			this.fs.copyTpl(
-	      this.templatePath('assets/dashboard/dashboard.controller.js'),
-	      this.destinationPath('assets/dashboard/dashboard.web.js')
+	      this.templatePath('assets/components/dashboard/dashboard.controller.js'),
+	      this.destinationPath('assets/components/dashboard/dashboard.web.js')
 	    );
 	    this.fs.copyTpl(
-	      this.templatePath('assets/dashboard/dashboard.controller.js'),
-	      this.destinationPath('assets/dashboard/dashboard.mobile.js')
+	      this.templatePath('assets/components/dashboard/dashboard.controller.js'),
+	      this.destinationPath('assets/components/dashboard/dashboard.mobile.js')
 	    );
 	    this.fs.copyTpl(
-	      this.templatePath('assets/dashboard/dashboard.style.sass'),
-	      this.destinationPath('assets/dashboard/dashboard.web.sass')
+	      this.templatePath('assets/components/dashboard/dashboard.style.sass'),
+	      this.destinationPath('assets/components/dashboard/dashboard.web.sass')
 	    );
 	    this.fs.copyTpl(
-	      this.templatePath('assets/dashboard/dashboard.style.sass'),
-	      this.destinationPath('assets/dashboard/dashboard.mobile.sass')
+	      this.templatePath('assets/components/dashboard/dashboard.style.sass'),
+	      this.destinationPath('assets/components/dashboard/dashboard.mobile.sass')
 	    );
 	    this.fs.copyTpl(
-	      this.templatePath('assets/dashboard/dashboard.template.html'),
-	      this.destinationPath('assets/dashboard/dashboard.web.html')
+	      this.templatePath('assets/components/dashboard/dashboard.template.html'),
+	      this.destinationPath('assets/components/dashboard/dashboard.web.html')
 	    );
 	    this.fs.copyTpl(
-	      this.templatePath('assets/dashboard/dashboard.template.html'),
-	      this.destinationPath('assets/dashboard/dashboard.mobile.html')
+	      this.templatePath('assets/components/dashboard/dashboard.template.html'),
+	      this.destinationPath('assets/components/dashboard/dashboard.mobile.html')
 	    );
 		},
 	},
