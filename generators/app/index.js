@@ -27,12 +27,12 @@ module.exports = generators.Base.extend({
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/constants.web.js'),
-				this.destinationPath('assets/applications/constants.web.js')
+				this.templatePath('assets/constants.web.js'),
+				this.destinationPath('assets/constants.web.js')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/constants.mobile.js'),
-				this.destinationPath('assets/applications/constants.mobile.js')
+				this.templatePath('assets/constants.mobile.js'),
+				this.destinationPath('assets/constants.mobile.js')
 			);
 
 			this.fs.copyTpl(
