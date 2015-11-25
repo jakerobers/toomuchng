@@ -1,10 +1,12 @@
-app.config(function($routeProvider) {
+angular.module('app')
+
+.config(function($routeProvider) {
 
 	//todo: sample route given below.
 	var routes = {
 		dashboardRoute: {
-			templateUrl: 'templates/dashboard.template.html',
-	 	 controller: 'DashboardCtrl',
+			templateUrl: 'templates/dashboard.mobile.html',
+			controller: 'DashboardCtrl',
 		}
 	};
 

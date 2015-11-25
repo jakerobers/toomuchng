@@ -2,40 +2,6 @@ var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
 	_hasAuth: false,
-	_generateAuth: function() {
-		this.fs.copyTpl(
-			this.templatePath('assets/services/auth.service.js'),
-			this.destinationPath('assets/services/auth.service.js')
-		);
-
-		this.fs.copyTpl(
-			this.templatePath('assets/services/session.service.js'),
-			this.destinationPath('assets/services/session.service.js')
-		);
-
-		this.fs.copyTpl(
-			this.templatePath('assets/models/user.model.js'),
-			this.destinationPath('assets/models/user.model.js')
-		);
-	},
-
-	prompting: function () {
-		var done = this.async();
-		var prompts = [{
-			type    : 'confirm',
-			name    : 'hasAuth',
-			message : 'Should we generate an auth service and user models?',
-			default : false
-		}];
-
-		this.prompt(prompts, function (answers) {
-			if ( answers.hasAuth ) {
-				this._hasAuth = true;
-			}
-			done();
-		}.bind(this));
-
-	},
 
 	writing: {
 		root: function() {
@@ -43,58 +9,91 @@ module.exports = generators.Base.extend({
 				this.templatePath('gitignore'),
 				this.destinationPath('.gitignore')
 			);
-
-			this.fs.copyTpl(
-				this.templatePath('karma.conf.js'),
-				this.destinationPath('karma.conf.js')
-			);
 		},
 
 		assets: function() {
-
-			if ( this._hasAuth ) {
-				this._generateAuth();
-			}
-
 			this.fs.copyTpl(
-				this.templatePath('assets/app.js'),
-				this.destinationPath('assets/app.js')
+				this.templatePath('assets/applications/web/app.web.js'),
+				this.destinationPath('assets/applications/web/app.web.js')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/app.mobile.js'),
+				this.destinationPath('assets/applications/mobile/app.mobile.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/constants.js'),
-				this.destinationPath('assets/constants.js')
+				this.templatePath('assets/constants/constants.web.js'),
+				this.destinationPath('assets/constants/constants.web.js')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/constants/constants.mobile.js'),
+				this.destinationPath('assets/constants/constants.mobile.js')
 			);
 
 			this.fs.copyTpl(
 				this.templatePath('assets/index.html'),
 				this.destinationPath('assets/index.html')
 			);
-
 			this.fs.copyTpl(
-				this.templatePath('assets/layout.style.sass'),
-				this.destinationPath('assets/layout.style.sass')
+				this.templatePath('assets/applications/web/index.web.html'),
+				this.destinationPath('assets/applications/web/index.web.html')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/index.mobile.html'),
+				this.destinationPath('assets/applications/mobile/index.mobile.html')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/mixins.style.sass'),
-				this.destinationPath('assets/mixins.style.sass')
+				this.templatePath('assets/applications/web/layout.web.sass'),
+				this.destinationPath('assets/applications/web/layout.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/layout.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/layout.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/routes.js'),
-				this.destinationPath('assets/routes.js')
+				this.templatePath('assets/applications/web/mixins.web.sass'),
+				this.destinationPath('assets/applications/web/mixins.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/mixins.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/mixins.mobile.sass')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/style.sass'),
-				this.destinationPath('assets/style.sass')
+				this.templatePath('assets/applications/web/routes.web.js'),
+				this.destinationPath('assets/applications/web/routes.web.js')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/routes.mobile.js'),
+				this.destinationPath('assets/applications/mobile/routes.mobile.js')
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/variables.style.sass'),
-				this.destinationPath('assets/variables.style.sass')
+				this.templatePath('assets/applications/web/style.web.sass'),
+				this.destinationPath('assets/applications/web/style.web.sass')
 			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/style.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/style.mobile.sass')
+			);
+
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/web/variables.web.sass'),
+				this.destinationPath('assets/applications/web/variables.web.sass')
+			);
+			this.fs.copyTpl(
+				this.templatePath('assets/applications/mobile/variables.mobile.sass'),
+				this.destinationPath('assets/applications/mobile/variables.mobile.sass')
+			);
+		},
+
+		collections: function() {
+			this.mkdir('assets/collections');
+		},
+		constants: function() {
+			this.mkdir('assets/constants');
 		},
 
 		gulp: function() {
@@ -159,11 +158,6 @@ module.exports = generators.Base.extend({
 		    );
 
 		    this.fs.copyTpl(
-		      this.templatePath('gulp_tasks/spec.task.js'),
-		      this.destinationPath('gulp_tasks/spec.task.js')
-		    );
-
-		    this.fs.copyTpl(
 		      this.templatePath('gulp_tasks/vendor.task.js'),
 		      this.destinationPath('gulp_tasks/vendor.task.js')
 		    );
@@ -173,49 +167,41 @@ module.exports = generators.Base.extend({
 		      this.destinationPath('gulp_tasks/watch.task.js')
 		    );
 		},
-		collections: function() {
-			this.fs.copyTpl(
-		      this.templatePath('assets/collections/base.collection.js'),
-		      this.destinationPath('assets/collections/base.collection.js')
-		    );
-		},
-		components: function() {
-			this.mkdir('assets/components');
-		},
 		fonts: function() {
-			this.mkdir('assets/fonts');
+			this.mkdir('assets/static/fonts');
 		},
 		images: function() {
-			this.mkdir('assets/images');
+			this.mkdir('assets/static/images');
+		},
+		models: function() {
+			this.mkdir('assets/models');
 		},
 		pages: function() {
 			this.fs.copyTpl(
-		      this.templatePath('assets/pages/dashboard.controller.js'),
-		      this.destinationPath('assets/pages/dashboard.controller.js')
-		    );
-		    this.fs.copyTpl(
-		      this.templatePath('assets/pages/dashboard.style.sass'),
-		      this.destinationPath('assets/pages/dashboard.style.sass')
-		    );
-		    this.fs.copyTpl(
-		      this.templatePath('assets/pages/dashboard.template.html'),
-		      this.destinationPath('assets/pages/dashboard.template.html')
-		    );
+	      this.templatePath('assets/components/dashboard/dashboard.controller.js'),
+	      this.destinationPath('assets/components/dashboard/dashboard.web.js')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/components/dashboard/dashboard.controller.js'),
+	      this.destinationPath('assets/components/dashboard/dashboard.mobile.js')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/components/dashboard/dashboard.style.sass'),
+	      this.destinationPath('assets/components/dashboard/dashboard.web.sass')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/components/dashboard/dashboard.style.sass'),
+	      this.destinationPath('assets/components/dashboard/dashboard.mobile.sass')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/components/dashboard/dashboard.template.html'),
+	      this.destinationPath('assets/components/dashboard/dashboard.web.html')
+	    );
+	    this.fs.copyTpl(
+	      this.templatePath('assets/components/dashboard/dashboard.template.html'),
+	      this.destinationPath('assets/components/dashboard/dashboard.mobile.html')
+	    );
 		},
-		services: function() {
-			if ( !this._hasAuth ) {
-				this.mkdir('assets/services');
-			}
-		},
-		models: function() {
-			this.fs.copyTpl(
-		      this.templatePath('assets/models/base.model.js'),
-		      this.destinationPath('assets/models/base.model.js')
-		    );
-		},
-		vendor: function() {
-			this.mkdir('assets/vendor');
-		}
 	},
 
 	install: {
@@ -232,19 +218,19 @@ module.exports = generators.Base.extend({
 				"gulp-jshint",
 				"gulp-livereload",
 				"gulp-load-plugins",
+				"gulp-minify-css",
+				"gulp-minify-html",
 				"gulp-ng-annotate",
+				"gulp-plumber",
 				"gulp-rename",
 				"gulp-sass",
+				"gulp-sourcemaps",
+				"gulp-uglify",
 				"jasmine-core",
 				"jshint-stylish",
-				"karma",
-				"karma-jasmine",
-				"karma-phantomjs-launcher",
 				"mime",
 				"path",
-				"phantomjs",
 				"progress",
-				"q",
 				"run-sequence",
 				"through2"
 			], { 'saveDev': true });
@@ -253,13 +239,10 @@ module.exports = generators.Base.extend({
 			this.bowerInstall([
 				"angular-route",
 				"underscore",
-				"jsonapicompressor",
-				"bootstrap",
 				"angular",
 				"angular-mocks",
 				"angular-resource",
 				"angular-messages",
-				"angular-bootstrap",
 				"angular-websocket"
 			], { 'save': true });
 		}

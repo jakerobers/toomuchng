@@ -3,13 +3,13 @@ var gulp = require("gulp"),
 	config = require('./config'),
 	server = {
 		web: {
-			root: config.web_dir,
+			root: config.build_dir,
 			host: "localhost",
 			port: 9000,
 			livereload: true
 		}
 	}
 
-gulp.task("web:serve", function() {
+gulp.task("serve", function() {
 	return plugins.connect.server(server.web)
 });

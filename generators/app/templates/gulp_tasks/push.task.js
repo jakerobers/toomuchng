@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 	config = require('./config.js'),
 	secrets = require('./secrets.js');
 
-gulp.task('web:push:dev', function() {
+gulp.task('push:dev', function() {
 	var publisher = awspublish.create({
 		params: {
 			Bucket: secrets.bucket_name
@@ -14,25 +14,7 @@ gulp.task('web:push:dev', function() {
 	var headers = {
 		'Cache-Control': 'max-age=315360000, no-transform, public'
 	};
-	return gulp.src([config.web_dir + "/**/*.*"])
-		.pipe(publisher.publish(headers, {
-			force: true
-		}))
-		.pipe(awspublish.reporter());
-});
-
-gulp.task('web:push:dev', function() {
-	var publisher = awspublish.create({
-		params: {
-			Bucket: secrets.bucket_name
-		},
-		accessKeyId: secrets.aws_key,
-		secretAccessKey: secrets.aws_secret
-	});
-	var headers = {
-		'Cache-Control': 'max-age=315360000, no-transform, public'
-	};
-	return gulp.src([config.web_dir + "/**/*.*"])
+	return gulp.src([config.build_dir + "/**/*.*"])
 		.pipe(publisher.publish(headers, {
 			force: true
 		}))

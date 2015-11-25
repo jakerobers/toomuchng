@@ -1,18 +1,18 @@
 var determine_api_base = function(url) {
-	var api = 'http://localhost:3000';
-	if ( url.indexOf('localhost') < 0 && url.indexOf(':9000') < 0 ) {
-		api = 'https://example.herokuapp.com';
+	var api = location.protocol + '//' + location.hostname + ':3000/api';
+	if ( url.indexOf('domain') < 0 ) {
+		api = 'https://domain.herokuapp.com';
 	}
 	return api;
 }, determine_ws_base = function(url) {
-	var ws = 'ws://localhost:3000';
-	if ( url.indexOf('localhost') < 0 && url.indexOf(':9000') < 0 ) {
-		ws = 'ws://example.herokuapp.com';
+	var ws = 'ws://'+ location.hostname +':3000/';
+	if ( url.indexOf('domain') < 0 ) {
+		ws = 'ws://domain.herokuapp.com';
 	}
 	return ws;
 };
 
-app
+angular.module('app')
 .constant('ngAuthSettings', {
 	apiServiceBaseUri: determine_api_base(document.URL),
 	wsServiceBaseUri: determine_ws_base(document.URL),

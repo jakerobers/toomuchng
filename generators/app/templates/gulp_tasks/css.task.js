@@ -10,18 +10,36 @@ var gulp = require("gulp"),
 		sass: {
 			web: {
 				input: [
-					'assets/pages/**/*.sass',
-					'assets/components/**/*.sass'
+					'assets/**/*.web.sass',
+					'assets/**/*.sass',
+					'!assets/**/*.mobile.sass'
+				],
+				output: {}
+			},
+
+			mobile: {
+				input: [
+					'assets/**/*.mobile.sass',
+					'assets/**/*.sass',
+					'!assets/**/*.web.sass'
 				],
 				output: {}
 			}
 		},
 		css: {
 			web: {
-				input: ['assets/style.sass'],
+				input: ['assets/applications/web/style.web.sass'],
 				output: {
 					file: 'app.css',
 					dir: config.web_dir
+				}
+			},
+
+			mobile: {
+				input: ['assets/applications/mobile/style.mobile.sass'],
+				output: {
+					file: 'app.css',
+					dir: config.mobile_dir
 				}
 			}
 		}
@@ -29,12 +47,34 @@ var gulp = require("gulp"),
 
 gulp.task("web:css", function() {
 	return gulp.src(paths.css.web.input)
+	    .pipe(plugins.plumber(config.showError))
 		.pipe(plugins.sass(compile_options))
 		.pipe(plugins.concat(paths.css.web.output.file))
+		.pipe(plugins.sourcemaps.init())
+	    .pipe(plugins.minifyCss())
+    .pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(paths.css.web.output.dir))
 		.pipe(plugins.connect.reload());
 });
 
 gulp.task("web:watch:css", function() {
 	return gulp.watch(paths.sass.web.input, ['web:css']);
+});
+
+
+
+gulp.task("mobile:css", function() {
+	return gulp.src(paths.css.mobile.input)
+	    .pipe(plugins.plumber(config.showError))
+		.pipe(plugins.sass(compile_options))
+		.pipe(plugins.concat(paths.css.mobile.output.file))
+		.pipe(plugins.sourcemaps.init())
+	    .pipe(plugins.minifyCss())
+    .pipe(plugins.sourcemaps.write())
+		.pipe(gulp.dest(paths.css.mobile.output.dir))
+		.pipe(plugins.connect.reload());
+});
+
+gulp.task("mobile:watch:css", function() {
+	return gulp.watch(paths.sass.mobile.input, ['mobile:css']);
 });
