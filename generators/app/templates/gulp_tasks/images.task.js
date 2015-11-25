@@ -5,7 +5,7 @@ var gulp = require("gulp"),
 		images: {
 			media: {
 				input: [
-					'assets/media/images/**.*'
+					'assets/static/images/**.*'
 				],
 				output: {
 					dir: config.build_dir + "/images/"

@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 	paths = {
 		fonts: {
 			media: {
-				input: ['assets/media/fonts/**/*.*'],
+				input: ['assets/static/fonts/**/*.*'],
 				output: {
 					dir: config.build_dir + "/fonts/"
 				}

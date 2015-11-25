@@ -13,6 +13,8 @@ var gulp = require("gulp"),
 				input: {
 					templates: [
 						"assets/**/*.web.html",
+						"assets/**/*.html",
+						"!assets/**/*.mobile.html",
 					],
 					index: "assets/web/index.html",
 				},
@@ -25,6 +27,8 @@ var gulp = require("gulp"),
 				input: {
 					templates: [
 						"assets/**/*.mobile.html",
+						"assets/**/*.html",
+						"!assets/**/*.web.html",
 					],
 					index: "assets/mobile/index.html",
 				},

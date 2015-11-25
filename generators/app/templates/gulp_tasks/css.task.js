@@ -10,21 +10,25 @@ var gulp = require("gulp"),
 		sass: {
 			web: {
 				input: [
-					'assets/**/*.web.sass'
+					'assets/**/*.web.sass',
+					'assets/**/*.sass',
+					'!assets/**/*.mobile.sass'
 				],
 				output: {}
 			},
 
 			mobile: {
 				input: [
-					'assets/**/*.mobile.sass'
+					'assets/**/*.mobile.sass',
+					'assets/**/*.sass',
+					'!assets/**/*.web.sass'
 				],
 				output: {}
 			}
 		},
 		css: {
 			web: {
-				input: ['assets/web/style.web.sass'],
+				input: ['assets/applications/web/style.web.sass'],
 				output: {
 					file: 'app.css',
 					dir: config.web_dir
@@ -32,7 +36,7 @@ var gulp = require("gulp"),
 			},
 
 			mobile: {
-				input: ['assets/mobile/style.mobile.sass'],
+				input: ['assets/applications/mobile/style.mobile.sass'],
 				output: {
 					file: 'app.css',
 					dir: config.mobile_dir

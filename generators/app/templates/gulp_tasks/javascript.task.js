@@ -17,10 +17,11 @@ var gulp = require("gulp"),
 		js: {
 			web: {
 				input: [
-					"assets/web/app.js",
-					"assets/web/routes.js",
-					"assets/web/constants.js",
-					"assets/**/*.web.js"
+					"assets/applications/web/app.js",
+					"assets/applications/web/routes.js",
+					"assets/**/*.js",
+					"!assets/**/*.mobile.js"
+
 				],
 				output: {
 					file: "app.js",
@@ -29,10 +30,10 @@ var gulp = require("gulp"),
 			},
 			mobile: {
 				input: [
-					"assets/mobile/app.js",
-					"assets/mobile/routes.js",
-					"assets/mobile/constants.js",
-					"assets/**/*.mobile.js"
+					"assets/applications/mobile/app.js",
+					"assets/applications/mobile/routes.js",
+					"assets/**/*.js",
+					"!assets/**/*.web.js"
 				],
 				output: {
 					file: "app.js",
