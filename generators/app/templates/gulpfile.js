@@ -1,6 +1,5 @@
 var gulp = require("gulp"),
-	runSequence = require("run-sequence"),
-	Server = require('karma').Server;
+	runSequence = require("run-sequence");
 
 require("./gulp_tasks/build.task.js");
 require("./gulp_tasks/clean.task.js");
@@ -13,7 +12,6 @@ require("./gulp_tasks/serve.task.js");
 require("./gulp_tasks/vendor.task.js");
 require("./gulp_tasks/watch.task.js");
 require("./gulp_tasks/push.task.js");
-require("./gulp_tasks/spec.task.js");
 
 
 gulp.task("web", function() {
@@ -30,10 +28,6 @@ gulp.task("root", function() {
 
 gulp.task("build", function() {
   return runSequence("clean", "root", "web", "mobile", "serve");
-});
-
-gulp.task("spec", function() {
-  return runSequence("clean", "root:build", "web:build", "mobile:build", "test");
 });
 
 
