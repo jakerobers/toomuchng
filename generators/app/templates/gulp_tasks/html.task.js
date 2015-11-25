@@ -52,6 +52,10 @@ var gulp = require("gulp"),
 gulp.task("web:html:index", function() {
 	return gulp.src(paths.html.web.input.index)
 		.pipe(plugins.minifyHtml(minify_options))
+		.pipe(plugins.rename({
+			basename: 'index',
+			extname: '.html'
+		}))
 		.pipe(gulp.dest(paths.html.web.output.file))
 		.pipe(plugins.connect.reload());
 });
@@ -77,6 +81,10 @@ gulp.task("web:watch:html", function() {
 gulp.task("mobile:html:index", function() {
 	return gulp.src(paths.html.mobile.input.index)
 		.pipe(plugins.minifyHtml(minify_options))
+		.pipe(plugins.rename({
+			basename: 'index',
+			extname: '.html'
+		}))
 		.pipe(gulp.dest(paths.html.mobile.output.file))
 		.pipe(plugins.connect.reload());
 });

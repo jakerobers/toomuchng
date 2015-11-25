@@ -17,8 +17,8 @@ var gulp = require("gulp"),
 		js: {
 			web: {
 				input: [
-					"assets/applications/web/app.js",
-					"assets/applications/web/routes.js",
+					"assets/applications/web/app.web.js",
+					"assets/applications/web/routes.web.js",
 					"assets/**/*.js",
 					"!assets/**/*.mobile.js"
 
@@ -30,8 +30,8 @@ var gulp = require("gulp"),
 			},
 			mobile: {
 				input: [
-					"assets/applications/mobile/app.js",
-					"assets/applications/mobile/routes.js",
+					"assets/applications/mobile/app.mobile.js",
+					"assets/applications/mobile/routes.mobile.js",
 					"assets/**/*.js",
 					"!assets/**/*.web.js"
 				],
