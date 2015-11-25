@@ -238,12 +238,8 @@ module.exports = generators.Base.extend({
 				"gulp-uglify",
 				"jasmine-core",
 				"jshint-stylish",
-				"karma",
-				"karma-jasmine",
-				"karma-phantomjs-launcher",
 				"mime",
 				"path",
-				"phantomjs",
 				"progress",
 				"run-sequence",
 				"through2"
