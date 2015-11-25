@@ -13,12 +13,12 @@ module.exports = generators.Base.extend({
 
 		assets: function() {
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/web/app.js'),
-				this.destinationPath('assets/applications/web/app.js')
+				this.templatePath('assets/applications/web/app.web.js'),
+				this.destinationPath('assets/applications/web/app.web.js')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/mobile/app.js'),
-				this.destinationPath('assets/applications/mobile/app.js')
+				this.templatePath('assets/applications/mobile/app.mobile.js'),
+				this.destinationPath('assets/applications/mobile/app.mobile.js')
 			);
 
 			this.fs.copyTpl(
@@ -35,12 +35,12 @@ module.exports = generators.Base.extend({
 				this.destinationPath('assets/index.html')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/web/index.html'),
-				this.destinationPath('assets/applications/web/index.html')
+				this.templatePath('assets/applications/web/index.web.html'),
+				this.destinationPath('assets/applications/web/index.web.html')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/mobile/index.html'),
-				this.destinationPath('assets/applications/mobile/index.html')
+				this.templatePath('assets/applications/mobile/index.mobile.html'),
+				this.destinationPath('assets/applications/mobile/index.mobile.html')
 			);
 
 			this.fs.copyTpl(
@@ -62,12 +62,12 @@ module.exports = generators.Base.extend({
 			);
 
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/web/routes.js'),
-				this.destinationPath('assets/applications/web/routes.js')
+				this.templatePath('assets/applications/web/routes.web.js'),
+				this.destinationPath('assets/applications/web/routes.web.js')
 			);
 			this.fs.copyTpl(
-				this.templatePath('assets/applications/mobile/routes.js'),
-				this.destinationPath('assets/applications/mobile/routes.js')
+				this.templatePath('assets/applications/mobile/routes.mobile.js'),
+				this.destinationPath('assets/applications/mobile/routes.mobile.js')
 			);
 
 			this.fs.copyTpl(
