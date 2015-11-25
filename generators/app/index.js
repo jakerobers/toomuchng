@@ -9,11 +9,6 @@ module.exports = generators.Base.extend({
 				this.templatePath('gitignore'),
 				this.destinationPath('.gitignore')
 			);
-
-			this.fs.copyTpl(
-				this.templatePath('karma.conf.js'),
-				this.destinationPath('karma.conf.js')
-			);
 		},
 
 		assets: function() {
