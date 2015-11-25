@@ -1,3 +1,3 @@
-app.controller('DashboardCtrl', function($scope) {
+angular.module('app.dashboard').controller('DashboardCtrl', function($scope) {
 
 });

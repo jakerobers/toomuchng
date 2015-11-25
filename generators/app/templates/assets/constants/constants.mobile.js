@@ -12,7 +12,7 @@ var determine_api_base = function(url) {
 	return ws;
 };
 
-app
+angular.module('app')
 .constant('ngAuthSettings', {
 	apiServiceBaseUri: determine_api_base(document.URL),
 	wsServiceBaseUri: determine_ws_base(document.URL),
